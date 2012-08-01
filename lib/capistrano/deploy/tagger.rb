@@ -9,7 +9,7 @@ Capistrano::Configuration.instance(:must_exist).load do
   
   namespace :deploy do
 
-    after "deploy", "tagger:tag"
+    after "deploy", "deploy:tagger:tag"
 
     namespace :tagger do
       desc "Manage git tags to indicate current deployed codebase, and keep a history of the most recent deploys."
