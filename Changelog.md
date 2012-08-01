@@ -1,3 +1,9 @@
+## 2.0.1 (Aug 1, 2012)
+
+Fixed:
+
+  - The 'deploy:tagger:tag' task was being incorrectly called after the deployment.
+
 ## 2.0.0 (Aug 1, 2012)
 
 Renamed the gem to Capistrano-Deploy-Tagger. It now creates a specified tag with timestamp for each deploy, as well as a moving tag representing the latest deploy. This makes it easy to see at a glance which revisions were ever in production.
@@ -14,7 +20,7 @@ Features:
 
   - You can also prevent updating tags by setting :update_deploy_tags to false in your deploy.rb.
 
-Fixed
+Fixed:
  
  - Errors were being shown when initially creating the 'inproduction' tag.
 
