@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Ryan Conway"]
   s.email       = ["ryan.conway@forward.co.uk"]
-  s.homepage    = "http://github.com/rylon/capistrano-deploy-tagger"
+  s.homepage    = "http://github.com/forward/capistrano-deploy-tagger"
   s.summary     = %q{Capistrano-Deploy-Tagger creates and updates certain tags in Git each time you perform a deploy.}
   s.description = %q{Capistrano-Deploy-Tagger creates and updates certain tags in Git each time you perform a deploy. The first tag defaults to 'inproduction' and is always updated to refer to the revision that was just deployed. The second tag is a timestamp applied to every revision that is deployed to production.}
 
