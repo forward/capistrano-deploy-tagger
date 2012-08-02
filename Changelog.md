@@ -1,3 +1,10 @@
+## 2.0.2 (Aug 2, 2012)
+
+Fixed:
+
+  - The homepage field in the gemspec was incorrect.
+
+
 ## 2.0.1 (Aug 1, 2012)
 
 Fixed:

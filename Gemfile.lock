@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    capistrano-deploy-tagger (2.0.1)
+    capistrano-deploy-tagger (2.0.2)
       capistrano (>= 1.0.0)
 
 GEM
