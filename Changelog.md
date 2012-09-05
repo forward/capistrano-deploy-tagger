@@ -1,9 +1,14 @@
+## 2.0.3 (Sep 5, 2012)
+
+Fixed:
+
+  - The message about how to enable updating tags is no longer shown when an automatic deployment is performed (see 'Special Usage' in the Readme for more on this feature).
+
 ## 2.0.2 (Aug 2, 2012)
 
 Fixed:
 
   - The homepage field in the gemspec was incorrect.
-
 
 ## 2.0.1 (Aug 1, 2012)
 

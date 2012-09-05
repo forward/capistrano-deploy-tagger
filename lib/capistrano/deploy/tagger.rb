@@ -21,6 +21,8 @@ Capistrano::Configuration.instance(:must_exist).load do
         # keep_deploy_tags = fetch(:keep_deploy_tags) rescue 10
         current_branch = fetch(:branch)
 
+        is_automatic_deploy = fetch(:is_automatic_deploy) rescue false
+
         if update_tag
           
           user = git("config --get user.name", {:output => true})
@@ -61,8 +63,12 @@ Capistrano::Configuration.instance(:must_exist).load do
 
         else
 
-          puts "[Capistrano-Deploy-Tagger] Not updating deployment Git tags..."
-          puts "To enable this behaviour, add the following to your deploy.rb: 'set :update_deploy_tags, true'."
+          if is_automatic_deploy
+            puts "[Capistrano-Deploy-Tagger] Automatic deployment - not updating deployment Git tags..."
+          else
+            puts "[Capistrano-Deploy-Tagger] Not updating deployment Git tags..."
+            puts "To enable this behaviour, add the following to your deploy.rb: 'set :update_deploy_tags, true'."
+          end
 
         end
 
@@ -72,11 +78,12 @@ Capistrano::Configuration.instance(:must_exist).load do
 
   task :automatic do
     # The EC2 autoscale self deploy tool calls 'bundle exec cap automatic deploy' to trigger this.
-    # We set 'update_selfdeploy_tag' to false so the selfdeploy_tag isn't altered during autoscaling.
+    # We set 'update_deploy_tags' to false so the 'latest_deploy_tag' tag isn't altered during autoscaling.
     # We also override the branch to deploy from to be the selfdeploy_tag.
     
     set :deploy_via, :export # Git + capistrano don't like switching to a tag from master
     set :update_deploy_tags, false
+    set :is_automatic_deploy, true
     
     tag_name = fetch(:latest_deploy_tag) rescue "inproduction"
     set :branch, tag_name
