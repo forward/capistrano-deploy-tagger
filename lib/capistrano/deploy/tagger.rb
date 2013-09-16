@@ -58,12 +58,13 @@ Capistrano::Configuration.instance(:must_exist).load do
           end
 
           # Remove an existing 'latest_deploy_tag' tag, then recreate it at the current revision.
-          if git("tag -l #{tag_name}", {:output => true}) == tag_name
-            git "tag -d #{tag_name}", {:output => true}
-            git "push origin :#{tag_name}", {:output => true}
-          end
-          git "tag #{tag_name} #{revision} -m \"Latest deploy tag updated by #{user} <#{email}>.\"", {:output => true}
+          # if git("tag -l #{tag_name}", {:output => true}) == tag_name
+          #   git "tag -d #{tag_name}", {:output => true}
+          #   git "push origin :#{tag_name}", {:output => true}
+          # end
           
+          # Testing updating the tag without having to delete it first.
+          git "tag -f #{tag_name} #{revision} -m \"Latest deploy tag updated by #{user} <#{email}>.\"", {:output => true}
           git "push --tags", {:output => true}
 
         else
