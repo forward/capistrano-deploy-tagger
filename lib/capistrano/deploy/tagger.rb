@@ -15,10 +15,11 @@ Capistrano::Configuration.instance(:must_exist).load do
       desc "Manage git tags to indicate current deployed codebase, and keep a history of the most recent deploys."
 
       task :tag do
-        
         update_tag                    = fetch(:update_deploy_tags) rescue true
         tag_name                      = fetch(:latest_deploy_tag) rescue "inproduction"
+        update_timestamp              = fetch(:update_deploy_timestamp_tags) rescue true
         deploy_timestamp_tag_prefix   = fetch(:deploy_timestamp_tag_prefix) rescue "deploy"
+
         # keep_deploy_tags = fetch(:keep_deploy_tags) rescue 10
         current_branch = fetch(:branch)
 
@@ -33,25 +34,27 @@ Capistrano::Configuration.instance(:must_exist).load do
 
           git "fetch --tags", {:output => true}
 
-          # Remove any existing deploy-branch-date tags first - this is in case of multiple deploys of the same revision,
-          # we don't want multiple copies of those tags to start stacking up on the same revision.
-          # git("tag -l --contains #{revision} deploy-#{current_branch}-*", {:output => true}).to_a.each do |tag|
-          #   git "tag -d #{tag}"
-          #   git "push origin :#{tag}"
-          # end
-          
-          # Create a tag for the current deploy with time and date, we'll keep a few of these for history.
-          deploy_tag_string = "#{deploy_timestamp_tag_prefix}-#{Time.now.strftime("%Y%m%d-%H%M-%S")}"
-          git "tag #{deploy_tag_string} #{revision} -m \"Deployment by #{user} <#{email}>.\""
+          if update_timestamp
+            # Remove any existing deploy-branch-date tags first - this is in case of multiple deploys of the same revision,
+            # we don't want multiple copies of those tags to start stacking up on the same revision.
+            # git("tag -l --contains #{revision} deploy-#{current_branch}-*", {:output => true}).to_a.each do |tag|
+            #   git "tag -d #{tag}"
+            #   git "push origin :#{tag}"
+            # end
+            
+            # Create a tag for the current deploy with time and date, we'll keep a few of these for history.
+            deploy_tag_string = "#{deploy_timestamp_tag_prefix}-#{Time.now.strftime("%Y%m%d-%H%M-%S")}"
+            git "tag #{deploy_tag_string} #{revision} -m \"Deployment by #{user} <#{email}>.\""
 
-          # Remove older deploy tags, ensuring we keep at least ':keep_deploy_tags' of the more recent deploy tags.
-          # expired_deploy_tags = git("tag -l deploy-#{current_branch}-*", {:output => true}).to_a
-          # expired_deploy_tags.pop(keep_deploy_tags)
+            # Remove older deploy tags, ensuring we keep at least ':keep_deploy_tags' of the more recent deploy tags.
+            # expired_deploy_tags = git("tag -l deploy-#{current_branch}-*", {:output => true}).to_a
+            # expired_deploy_tags.pop(keep_deploy_tags)
 
-          # expired_deploy_tags.each do |tag|
-          #   git "tag -d #{tag}"
-          #   git "push origin :#{tag}"
-          # end
+            # expired_deploy_tags.each do |tag|
+            #   git "tag -d #{tag}"
+            #   git "push origin :#{tag}"
+            # end
+          end
 
           # Remove an existing 'latest_deploy_tag' tag, then recreate it at the current revision.
           if git("tag -l #{tag_name}", {:output => true}) == tag_name

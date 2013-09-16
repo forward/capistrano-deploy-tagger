@@ -34,6 +34,10 @@ You can also disable updating tags, again globally or for specific cap tasks, by
 
   - set :update_deploy_tags, false
 
+You can also disable timestamp type tags by setting the following in your deploy.rb:
+
+  - set :update_deploy_timestamp_tags, false
+
 ### Special Usage
 
 You can force Capistrano to deploy from the 'inproduction' tag, and prevent Capistrano-Deploy-Tagger from updating any tags by running your deployment like so:
