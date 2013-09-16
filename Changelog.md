@@ -1,3 +1,10 @@
+## 2.1.0 (Sep 16, 2013)
+
+Features:
+
+  - You can now disable adding timestamp tags alongside the `inproduction` tag by seting `:update_deploy_timestamp_tags` to `false` in your `deploy.rb`.
+  - You can customise the timestamp tags prefix by setting `:latest_deploy_timestamp_tag_prefix` in your `deploy.rb`, for example `set :latest_deploy_timestamp_tag_prefix, "staging"`.
+
 ## 2.0.3 (Sep 5, 2012)
 
 Fixed:
