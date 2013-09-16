@@ -15,10 +15,11 @@ Capistrano::Configuration.instance(:must_exist).load do
       desc "Manage git tags to indicate current deployed codebase, and keep a history of the most recent deploys."
 
       task :tag do
-        update_tag                    = fetch(:update_deploy_tags) rescue true
-        tag_name                      = fetch(:latest_deploy_tag) rescue "inproduction"
+        update_tag                    = fetch(:update_deploy_tags)           rescue true
         update_timestamp              = fetch(:update_deploy_timestamp_tags) rescue true
-        deploy_timestamp_tag_prefix   = fetch(:deploy_timestamp_tag_prefix) rescue "deploy"
+
+        tag_name                      = fetch(:latest_deploy_tag)                  rescue "inproduction"
+        deploy_timestamp_tag_prefix   = fetch(:latest_deploy_timestamp_tag_prefix) rescue "deploy"
 
         # keep_deploy_tags = fetch(:keep_deploy_tags) rescue 10
         current_branch = fetch(:branch)
