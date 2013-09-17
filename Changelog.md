@@ -1,3 +1,9 @@
+## 2.2.0 (Sep 17, 2013)
+
+Features:
+
+  - Tagging should now be quicker, due to a reduction in the number of requests made to Git.
+
 ## 2.1.0 (Sep 16, 2013)
 
 Features:

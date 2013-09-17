@@ -3,7 +3,7 @@ $:.push File.expand_path("../lib", __FILE__)
 
 Gem::Specification.new do |s|
   s.name        = "capistrano-deploy-tagger"
-  s.version     = "2.1.0"
+  s.version     = "2.2.0"
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Ryan Conway"]
   s.email       = ["ryan.conway@forward.co.uk"]
