@@ -31,7 +31,7 @@ Capistrano::Configuration.instance(:must_exist).load do
           user = git("config --get user.name", {:output => true})
           email = git("config --get user.email", {:output => true})
 
-          puts "[Capistrano-Deploy-Tagger] Updating deployment Git tags...\n\n"
+          puts "[Capistrano-Deploy-Tagger] Updating deployment Git tags...\n"
 
           git "fetch --tags", {:output => true}
 
@@ -58,14 +58,16 @@ Capistrano::Configuration.instance(:must_exist).load do
           end
 
           # Remove an existing 'latest_deploy_tag' tag, then recreate it at the current revision.
-          if git("tag -l #{tag_name}", {:output => true}) == tag_name
-            git "tag -d #{tag_name}", {:output => true}
-            git "push origin :#{tag_name}", {:output => true}
-          end
-          git "tag #{tag_name} #{revision} -m \"Latest deploy tag updated by #{user} <#{email}>.\"", {:output => true}
-          
+          # if git("tag -l #{tag_name}", {:output => true}) == tag_name
+          #   git "tag -d #{tag_name}", {:output => true}
+          #   git "push origin :#{tag_name}", {:output => true}
+          # end
+
+          # Trying to reduce the number of seperate requests out to Git to speed up the tagging step.
+          git "tag -f #{tag_name} #{revision} -m \"Latest deploy tag updated by #{user} <#{email}>.\"", {:output => true}
           git "push --tags", {:output => true}
 
+          puts "[Capistrano-Deploy-Tagger] Tagging complete."
         else
 
           if is_automatic_deploy
