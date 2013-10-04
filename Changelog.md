@@ -1,3 +1,9 @@
+## 2.2.1 (Oct 4, 2013)
+
+Bugfixes:
+
+  - Fixed an issue in some environments where the `inproduction` tag is not successfully moved if it already exists on the remote.
+
 ## 2.2.0 (Sep 17, 2013)
 
 Features:
