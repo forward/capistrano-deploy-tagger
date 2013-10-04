@@ -63,9 +63,10 @@ Capistrano::Configuration.instance(:must_exist).load do
           #   git "push origin :#{tag_name}", {:output => true}
           # end
 
-          # Trying to reduce the number of seperate requests out to Git to speed up the tagging step.
+          # Trying to reduce the number of seperate requests out to Git to speed up the tagging step. Have to force push the tags to
+          # ensure that the 'inproduction' tag is overwritten.
           git "tag -f #{tag_name} #{revision} -m \"Latest deploy tag updated by #{user} <#{email}>.\"", {:output => true}
-          git "push --tags", {:output => true}
+          git "push -f --tags", {:output => true}
 
           puts "[Capistrano-Deploy-Tagger] Tagging complete."
         else
