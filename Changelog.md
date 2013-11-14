@@ -1,4 +1,12 @@
+## 2.3.1 (Nov 14, 2013)
+
+Bugfixes:
+
+  - Resolved an issue with deployment tags being applied to commits which weren't yet pushed to the remote.
+
 ## 2.3.0 (Nov 14, 2013)
+
+Features:
 
   - Switch from using annotated tags to using lightweight tags, to ensure the git refs match between commit and tag.
 
