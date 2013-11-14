@@ -45,7 +45,7 @@ Capistrano::Configuration.instance(:must_exist).load do
             
             # Create a tag for the current deploy with time and date, we'll keep a few of these for history.
             deploy_tag_string = "#{deploy_timestamp_tag_prefix}-#{Time.now.strftime("%Y%m%d-%H%M-%S")}"
-            git "tag #{deploy_tag_string} #{revision} -m \"Deployment by #{user} <#{email}>.\""
+            git "tag #{deploy_tag_string} #{revision}"
 
             # Remove older deploy tags, ensuring we keep at least ':keep_deploy_tags' of the more recent deploy tags.
             # expired_deploy_tags = git("tag -l deploy-#{current_branch}-*", {:output => true}).to_a
@@ -65,7 +65,7 @@ Capistrano::Configuration.instance(:must_exist).load do
 
           # Trying to reduce the number of seperate requests out to Git to speed up the tagging step. Have to force push the tags to
           # ensure that the 'inproduction' tag is overwritten.
-          git "tag -f #{tag_name} #{revision} -m \"Latest deploy tag updated by #{user} <#{email}>.\"", {:output => true}
+          git "tag -f #{tag_name} #{revision}", {:output => true}
           git "push -f --tags", {:output => true}
 
           puts "[Capistrano-Deploy-Tagger] Tagging complete."
