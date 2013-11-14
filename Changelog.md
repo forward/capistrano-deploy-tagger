@@ -1,3 +1,7 @@
+## 2.3.0 (Nov 14, 2013)
+
+  - Switch from using annotated tags to using lightweight tags, to ensure the git refs match between commit and tag.
+
 ## 2.2.1 (Oct 4, 2013)
 
 Bugfixes:

@@ -2,7 +2,7 @@
 
 ### About
 
-Capistrano-Deploy-Tagger creates and updates certain tags in Git each time you perform a deploy.
+Capistrano-Deploy-Tagger creates and updates certain lightweight tags in Git each time you perform a deploy.
 
 There are two types of tag, the first defaults to `inproduction`, and is always updated to refer to the revision that was just deployed. This gives you a tag which always points to the latest release to production, or to a staging or test server (in which case you can configure the tag to be intest or instaging in your test or staging deploy script). This can be used in many ways, for example, in an autoscaling environment, to clone the correct release of software.
 
