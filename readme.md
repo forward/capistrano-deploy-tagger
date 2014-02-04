@@ -8,7 +8,7 @@ There are two types of tag, the first defaults to `inproduction`, and is always 
 
 The second type of tag is a timestamp, and is applied to every revision that is deployed to a server, giving you an easy way to see exactly which revisions have been deployed to a server in the past. This is helpful if attempting to diagnose issues that may not have become immediately apparent.  The prefix is configurable here as well, so you can distinguish between different environments/deploy scripts if necessary (default is "deploy-YYYYMMDD-hh-mm-ss").
 
-__Note__: Capistrano 3 is completely incompatible with Capistrano 2, and therefore Capistrano-Deploy-Tagger will not function with Capistrano 3. If you are using Capistrano 3, you can use [Cap-EC2](https://github.com/forward3d/cap-deploy-tagger), however note that the configuration is not compatible between Capistrano-Deploy-Tagger and Cap-Deploy-Tagger.
+__Note__: Capistrano 3 is completely incompatible with Capistrano 2, and therefore Capistrano-Deploy-Tagger will not function with Capistrano 3. If you are using Capistrano 3, you can use [Cap-Deploy-Tagger](https://github.com/forward3d/cap-deploy-tagger), however note that the configuration is not compatible between Capistrano-Deploy-Tagger and Cap-Deploy-Tagger.
 
 ### Installing
 
