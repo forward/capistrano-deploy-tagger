@@ -31,6 +31,8 @@ Capistrano::Configuration.instance(:must_exist).load do
           user = git("config --get user.name", {:output => true})
           email = git("config --get user.email", {:output => true})
 
+          latest_revision.strip!
+
           puts "[Capistrano-Deploy-Tagger] Updating deployment Git tags...\n"
 
           git "fetch --tags", {:output => true}
