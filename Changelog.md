@@ -1,3 +1,9 @@
+## 2.3.2 (May 8, 2013)
+
+Bugfixes:
+
+  - Resolved an issue with additional whitespace present in the Git revision hash.
+
 ## 2.3.1 (Nov 14, 2013)
 
 Bugfixes:
