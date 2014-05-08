@@ -1,3 +1,9 @@
+## 2.3.3 (May 8, 2013)
+
+Admin:
+
+  - Added the MIT license to the Gemspec.
+
 ## 2.3.2 (May 8, 2013)
 
 Bugfixes:
