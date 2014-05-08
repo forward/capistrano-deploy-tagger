@@ -10,6 +10,7 @@ Gem::Specification.new do |s|
   s.homepage    = "http://github.com/forward/capistrano-deploy-tagger"
   s.summary     = %q{Capistrano-Deploy-Tagger creates and updates certain tags in Git each time you perform a deploy.}
   s.description = %q{Capistrano-Deploy-Tagger creates and updates certain tags in Git each time you perform a deploy. The first tag defaults to 'inproduction' and is always updated to refer to the revision that was just deployed. The second tag is a timestamp applied to every revision that is deployed to production.}
+  s.license     = 'MIT'
 
   s.rubyforge_project = "capistrano-deploy-tagger"
 
