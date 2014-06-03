@@ -46,7 +46,7 @@ Capistrano::Configuration.instance(:must_exist).load do
             # end
             
             # Create a tag for the current deploy with time and date, we'll keep a few of these for history.
-            deploy_tag_string = "#{deploy_timestamp_tag_prefix}-#{Time.now.strftime("%Y%m%d-%H%M-%S")}"
+            deploy_tag_string = "#{deploy_timestamp_tag_prefix}-#{Time.now.strftime("%Y%m%d-%H%M%S")}"
             git "tag #{deploy_tag_string} #{latest_revision}"
 
             # Remove older deploy tags, ensuring we keep at least ':keep_deploy_tags' of the more recent deploy tags.
