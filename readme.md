@@ -28,15 +28,15 @@ By default, the first tag which represents the latest deploy is named `inproduct
   
   - `set :latest_deploy_tag, "your_tag_name_here"`
 
-Likewise, the prefix for the timestamp tag (by default "deploy-YYYYMMDD-hh-mm-ss") can be changed globally, or for certain cap tasks or environments by setting the following in your `deploy.rb`:
+Likewise, the prefix for the timestamp tag (by default `deploy`) can be changed globally, or for certain cap tasks or environments by setting the following in your `deploy.rb`:
   
   - `set :latest_deploy_timestamp_tag_prefix, "your_timestamp_tag_prefix_here"`
 
-You can also change the default timestamp format, again globally or for specific cap tasks, by setting the following in your `deploy.rb`:
+You can also change the timestamp format (by default `%Y%m%d-%H%M-%S`), again globally or for specific cap tasks, by setting the following in your `deploy.rb`:
 
   - `set :latest_deploy_timestamp_tag_format, "%Y%m%d-%H%M%S"`
 
-where the format is any valid strftime format
+where the format is any valid `strftime` format.
 
 You can also disable updating tags, again globally or for specific cap tasks, by setting the following in your `deploy.rb`:
 

@@ -1,3 +1,9 @@
+# 2.3.4 (June 4, 2014)
+
+Features:
+
+  - You can now override the default timestamp format by setting `:latest_deploy_timestamp_tag_format` in your `deploy.rb`.
+
 ## 2.3.3 (May 8, 2013)
 
 Admin:
